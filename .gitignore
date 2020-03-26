@@ -1,0 +1,12 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# IntelliJ
+*.iml
+*.idea
+
+# Target
+target

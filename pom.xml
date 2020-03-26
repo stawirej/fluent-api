@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.stawirej.fluentapi</groupId>
+    <artifactId>fluent-api</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <name>fluent-api</name>
+    <packaging>bundle</packaging>
+
+    <description>Java 8+ preposition functions for building fluent api</description>
+    <url>https://github.com/stawirej/fluent-api</url>
+
+    <developers>
+        <developer>
+            <name>Piotr Stawirej</name>
+            <url>https://piotrstawirej.bitbucket.io/</url>
+            <id>pstawirej</id>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/stawirej/fluent-api</url>
+        <connection>scm:git:git@github.com:stawirej/fluent-api.git</connection>
+        <developerConnection>scm:git:git@github.com:stawirej/fluent-api.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/stawirej/fluent-api/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+        <maven.bundle.plugin.version>4.2.1</maven.bundle.plugin.version>
+        <assertj.core.version>3.13.2</assertj.core.version>
+        <junit.version>5.5.2</junit.version>
+        <java.version>8</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>${maven.bundle.plugin.version}</version>
+                <configuration>
+                    <instructions>
+                        <Export-Package>*</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <useFile>false</useFile>
+                    <systemProperties>
+                        <property>
+                            <name>generateReport</name>
+                            <value>html</value>
+                        </property>
+                    </systemProperties>
+                    <includes>
+                        <include>**/*Scenarios.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
