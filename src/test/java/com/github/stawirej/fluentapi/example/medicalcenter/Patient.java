@@ -6,16 +6,16 @@ public final class Patient {
 
     private final Doctor doctor;
     private final Instant visitDate;
-    private final Long id;
+    private final Id id;
     private final Reason reason;
 
-    public Patient(Long id) {
+    public Patient(Id id) {
 
         this(id, null, null, null);
     }
 
     public Patient(
-            Long id,
+            Id id,
             Reason reason,
             Doctor doctor,
             Instant visitDate) {
@@ -41,7 +41,7 @@ public final class Patient {
         return reason;
     }
 
-    public Long id() {
+    public Id id() {
 
         return id;
     }

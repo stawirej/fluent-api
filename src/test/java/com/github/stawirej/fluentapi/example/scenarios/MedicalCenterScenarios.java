@@ -1,6 +1,7 @@
 package com.github.stawirej.fluentapi.example.scenarios;
 
 import com.github.stawirej.fluentapi.example.medicalcenter.Doctor;
+import com.github.stawirej.fluentapi.example.medicalcenter.Id;
 import com.github.stawirej.fluentapi.example.medicalcenter.MedicalCenter;
 import com.github.stawirej.fluentapi.example.medicalcenter.Patient;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ final class MedicalCenterScenarios {
     void registerPatient() {
         // Given
         MedicalCenter medicalCenter = new MedicalCenter();
-        Patient patient = new Patient(1L);
+        Patient patient = new Patient(Id.of(1));
         Doctor doctor = new Doctor();
         Instant date = ZonedDateTime.now().plusDays(3).toInstant();
 
@@ -26,7 +27,7 @@ final class MedicalCenterScenarios {
         medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
 
         // Then
-        Patient registeredPatient = medicalCenter.getPatientById(1L);
+        Patient registeredPatient = medicalCenter.getPatientBy(Id.of(1));
         then(registeredPatient.reason()).isEqualTo(HEADACHE);
         then(registeredPatient.visitDate()).isEqualTo(date);
         then(registeredPatient.doctor()).isEqualTo(doctor);

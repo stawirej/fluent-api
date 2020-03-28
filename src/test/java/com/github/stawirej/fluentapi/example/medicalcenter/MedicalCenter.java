@@ -10,14 +10,14 @@ import java.util.Map;
 
 public final class MedicalCenter {
 
-    private final Map<Long, Patient> patients = new HashMap<>();
+    private final Map<Id, Patient> patients = new HashMap<>();
 
     public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
 
         return reason -> doctor -> date -> register(patient, reason, doctor, date);
     }
 
-    public Patient getPatientById(Long id) {
+    public Patient getPatientBy(Id id) {
 
         return patients.get(id);
     }
