@@ -5,9 +5,13 @@
 ## Executive summary
 
 ## Introduction
+
 ### Situation
+
 ### Complication
+
 ### Key question
+How can we build fluent APIs in Java?
 
 ## Answer
 
