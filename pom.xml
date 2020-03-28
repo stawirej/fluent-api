@@ -11,7 +11,7 @@
     <name>fluent-api</name>
     <packaging>bundle</packaging>
 
-    <description>Java 8+ preposition functions for building fluent api</description>
+    <description>Java 8+ words substitution functions for building fluent api</description>
     <url>https://github.com/stawirej/fluent-api</url>
 
     <developers>
