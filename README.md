@@ -11,7 +11,7 @@
 ### Complication
 
 ### Key question
-How can we build fluent APIs in Java?
+How can we build fluent APIs in Java that mimic natural language?
 
 ## Answer
 
