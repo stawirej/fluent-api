@@ -1,6 +1,5 @@
 package com.github.stawirej.fluentapi.example.library;
 
-
 import com.github.stawirej.fluentapi.prepositions.simple.ToConsumer;
 
 import java.util.ArrayList;
@@ -29,9 +28,13 @@ public final class Library {
             Book book,
             Reader reader) {
 
-        int bookIndex = books.indexOf(book);
-        Book foundBook = books.get(bookIndex);
-        reader.add(foundBook);
-        books.remove(bookIndex);
+        try {
+            int bookIndex = books.indexOf(book);
+            Book foundBook = books.get(bookIndex);
+            reader.add(foundBook);
+            books.remove(bookIndex);
+        } catch (Exception exception) {
+            throw new CouldNotLendBook();
+        }
     }
 }
