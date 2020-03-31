@@ -17,8 +17,8 @@ We struggle to introduce fluent api approach. It might rise some challenge for n
 For covering trivial functionality connected with creating objects we always can use a builder pattern. \
 We start to struggle when comes to create fluent api of more complicated behavior.
 
-> “Clean code is simple and direct. Clean code reads like well-written prose. \
-> Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control."
+> Clean code is simple and direct. Clean code reads like well-written prose. \
+> Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control.
 > * Grady Booch author of Object Oriented Analysis and Design with Applications
 
 Stop for a moment and try to think about part of above quote: "... well-written prose."
