@@ -13,7 +13,7 @@ For methods with a small amount of parameters we might not have an issue with th
 Especially when we provide decent documentation. We use them and experience shows we get used to their look.
 
 ### Complication
-We struggle to introduce fluent api approach. It might rise some challenge for new and existing code. \
+We struggle to introduce fluent api approach. It might rise some challenge for new or existing code. \
 For covering trivial functionality connected with creating objects we always can use a builder pattern. \
 We start to struggle when comes to create fluent api of more complicated behavior.
 
