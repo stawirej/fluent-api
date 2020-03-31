@@ -40,8 +40,9 @@ How can we easily build a fluent API in Java and mimic natural language?
 
 ![alt text](/png/drum.png "Terry Bozzio Drum Kit") 
 
-Terry Bozzio was asked once why he need such a big drum kit. "To play music, I need notes" he said.
+Terry Bozzio was asked once why he need such a big drum kit. "To play music, I need notes!" he said.
 
+Paraphrasing: "To create fluent API I need words!"
 
 Higher order function, function currying, decorator.
  
