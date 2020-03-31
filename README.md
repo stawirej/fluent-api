@@ -15,7 +15,7 @@ Especially when we provide decent documentation. We use them and experience show
 ### Complication
 We struggle to introduce fluent api approach. It might rise some challenge for new and existing code. \
 For covering trivial functionality connected with creating objects we always can use a builder pattern. \
-We start to struggle when comes to create fluent api on top of existing behavior.
+We start to struggle when comes to create fluent api of more complicated behavior.
 
 > “Clean code is simple and direct. Clean code reads like well-written prose. \
 > Clean code never obscures the designer’s intent but rather is full of crisp abstractions and straightforward lines of control."
@@ -28,8 +28,8 @@ Often we encounter methods like:
 library.lend(book, reader);
 ```
 
-Due to decent naming we clearly see this code realize book lending functionality.
-However, try to read that code at loud. You will get something like: "Library lend book reader"
+Due to decent naming we clearly see this code realize book lending functionality. \
+However, try to read that code at loud. You will get something like: "Library lend book reader" \
 Doesn't sound as "well-written prose"? It doesn't even sound as a proper sentence.
 
 ### Key question
