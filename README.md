@@ -37,6 +37,12 @@ What we miss here? Prepositions! Add it, and we have correct english sentence: "
 How can we easily build a fluent API in Java and mimic natural language?
 
 ## Answer
+
+![alt text](/png/drum.png "Terry Bozzio Drum Kit") 
+
+Terry Bozzio was asked once why he need such a big drum kit. "To play music, I need notes" he said.
+
+
 Higher order function, function currying, decorator.
  
 ## Appendix
