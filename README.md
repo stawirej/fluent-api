@@ -30,7 +30,8 @@ library.lend(book, reader);
 
 Due to decent naming we clearly see this code realize book lending functionality. \
 However, try to read that code at loud. You will get something like: "Library lend book reader".\
-Doesn't sound as "well-written prose"? It doesn't even sound as a proper sentence.
+Doesn't sound as "well-written prose"? It doesn't even sound as a proper sentence. \
+What we miss here? Prepositions! Add it, and we have correct english sentence: "Library lend book to reader".
 
 ### Key question
 How can we easily build a fluent API in Java and mimic natural language?
