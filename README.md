@@ -37,7 +37,7 @@ How can we easily build a fluent API in Java and mimic natural language?
 
 ## Answer
 
-### Prepositions
+### Missing parts of speech
 Terry Bozzio was asked once why he need such a big drum kit. "To play music, I need notes!" he said.
 Paraphrasing: "To create fluent API, we need words!"
 
