@@ -28,6 +28,8 @@ Often we encounter methods like:
 library.lend(book, reader);
 ```
 
+Nouns, verbs
+
 Due to decent naming we clearly see this code realize book lending functionality. \
 However, try to read that code at loud. You will get something like: "Library lend book reader".\
 Doesn't sound as "well-written prose"? It doesn't even sound as a proper sentence. \
@@ -38,13 +40,21 @@ How can we easily build a fluent API in Java and mimic natural language?
 
 ## Answer
 
-![alt text](/png/drum.png "Terry Bozzio Drum Kit") 
-
+### Prepositions
 Terry Bozzio was asked once why he need such a big drum kit. "To play music, I need notes!" he said.
+Paraphrasing: "To create fluent API, we need words!"
 
-Paraphrasing: "To create fluent API I need words!"
+We know a concept of having class names (things) as nouns and verbs for methods (behaviours). It worked pretty well so far. 
+However, we face an obstacle when we try to build fluent API with limited words.
 
-Higher order function, function currying, decorator.
+To solve it, we need to introduce missing part of english sentences as prepositions.
+Having all verbs, nouns and prepositions in place we can build API which sounds like "well-written prose".
+
+### Higher order function
+
+### Function currying
+
+### Decorator
  
 ## Appendix
 
