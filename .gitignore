@@ -10,3 +10,7 @@
 
 # Target
 target
+
+
+# Other
+.DS_Store
