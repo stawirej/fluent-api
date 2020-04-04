@@ -3,6 +3,8 @@
 image:https://github.com/stawirej/fluent-api/workflows/Java%20CI%20with%20Maven/badge.svg[Java CI with Maven]
 image:http://img.shields.io/:license-apache-blue.svg[License,link=http://www.apache.org/licenses/LICENSE-2.0.html]
 
+= Practical application of function currying for building fluent api in Java
+
 == Executive summary
 
 == Introduction
