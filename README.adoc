@@ -3,7 +3,7 @@
 image:https://github.com/stawirej/fluent-api/workflows/Java%20CI%20with%20Maven/badge.svg[Java CI with Maven]
 image:http://img.shields.io/:license-apache-blue.svg[License,link=http://www.apache.org/licenses/LICENSE-2.0.html]
 
-= Practical application of function currying for building fluent api in Java
+= Practical application of higher-order functions and function currying for building fluent api in Java
 
 == Executive summary
 
@@ -75,9 +75,14 @@ library.lend(book).to(reader);
 
 Now we have correct english sentence: "Library lend book to reader"!
 
-=== Higher order function
+To introduce this concept into Java code in practical way we need to use higher-order functions and function currying.
+
+=== Higher-order functions
 
 === Function currying
+
+In mathematics and computer science, currying is the technique of translating the evaluation of a function that +
+takes multiple arguments into evaluating a sequence of functions, each with a single argument (https://en.wikipedia.org/wiki/Currying[wiki]).
 
 === Decorator
 
