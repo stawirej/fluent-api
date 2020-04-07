@@ -12,33 +12,38 @@ public final class MedicalCenter {
 
     private final Map<Id, Patient> patients = new HashMap<>();
 
-    public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
-
-        return new WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason>() {
-            @Override
-            public ToFunction<AtConsumer<Instant>, Doctor> with(Reason reason) {
-
-                return new ToFunction<AtConsumer<Instant>, Doctor>() {
-                    @Override
-                    public AtConsumer<Instant> to(Doctor doctor) {
-
-                        return new AtConsumer<Instant>() {
-                            @Override
-                            public void at(Instant date) {
-
-                                register(patient, reason, doctor, date);
-                            }
-                        };
-                    }
-                };
-            }
-        };
-    }
+    //    public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
+    //
+    //        return new WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason>() {
+    //            @Override
+    //            public ToFunction<AtConsumer<Instant>, Doctor> with(Reason reason) {
+    //
+    //                return new ToFunction<AtConsumer<Instant>, Doctor>() {
+    //                    @Override
+    //                    public AtConsumer<Instant> to(Doctor doctor) {
+    //
+    //                        return new AtConsumer<Instant>() {
+    //                            @Override
+    //                            public void at(Instant date) {
+    //
+    //                                register(patient, reason, doctor, date);
+    //                            }
+    //                        };
+    //                    }
+    //                };
+    //            }
+    //        };
+    //    }
 
     //    public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
     //
-    //        return reason -> doctor -> date -> register(patient, reason, doctor, date);
+    //        return reason -> (ToFunction<AtConsumer<Instant>, Doctor>) doctor -> (AtConsumer<Instant>) date -> register(patient, reason, doctor, date);
     //    }
+
+    public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
+
+        return reason -> doctor -> date -> register(patient, reason, doctor, date);
+    }
 
     public Patient getPatientBy(Id id) {
 
