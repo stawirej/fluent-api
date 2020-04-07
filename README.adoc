@@ -88,4 +88,6 @@ takes multiple arguments into evaluating a sequence of functions, each with a si
 
 == Appendix
 
+DSL not supporting lambdas when not a functional interface (interface with one function).
+
 === Maven Central
