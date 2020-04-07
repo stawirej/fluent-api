@@ -1,4 +1,4 @@
-package com.github.stawirej.fluentapi.example.medicalcenter;
+package com.github.stawirej.fluentapi.example.fluentapi.medicalcenter;
 
 import java.time.Instant;
 

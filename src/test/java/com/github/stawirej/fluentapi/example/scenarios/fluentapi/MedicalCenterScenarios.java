@@ -1,15 +1,15 @@
-package com.github.stawirej.fluentapi.example.scenarios;
+package com.github.stawirej.fluentapi.example.scenarios.fluentapi;
 
-import com.github.stawirej.fluentapi.example.medicalcenter.Doctor;
-import com.github.stawirej.fluentapi.example.medicalcenter.Id;
-import com.github.stawirej.fluentapi.example.medicalcenter.MedicalCenter;
-import com.github.stawirej.fluentapi.example.medicalcenter.Patient;
+import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Doctor;
+import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Id;
+import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.MedicalCenter;
+import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Patient;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
 import java.time.ZonedDateTime;
 
-import static com.github.stawirej.fluentapi.example.medicalcenter.Reason.HEADACHE;
+import static com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Reason.HEADACHE;
 import static org.assertj.core.api.BDDAssertions.then;
 
 final class MedicalCenterScenarios {

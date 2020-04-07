@@ -1,4 +1,4 @@
-package com.github.stawirej.fluentapi.example.library;
+package com.github.stawirej.fluentapi.example.dslgeneric.library;
 
 import java.util.ArrayList;
 import java.util.List;

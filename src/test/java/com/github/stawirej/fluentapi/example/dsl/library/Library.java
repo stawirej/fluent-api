@@ -1,6 +1,4 @@
-package com.github.stawirej.fluentapi.example.library;
-
-import com.github.stawirej.fluentapi.prepositions.simple.ToConsumer;
+package com.github.stawirej.fluentapi.example.dsl.library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,18 @@ public final class Library {
         books.add(book);
     }
 
-    public ToConsumer<Reader> lend(Book book) {
+//    public To lend(Book book) {
+//
+//        return new To() {
+//            @Override
+//            public void to(Reader reader) {
+//
+//                lend(book, reader);
+//            }
+//        };
+//    }
+
+    public To lend(Book book) {
 
         return reader -> lend(book, reader);
     }

@@ -1,9 +1,9 @@
-package com.github.stawirej.fluentapi.example.scenarios;
+package com.github.stawirej.fluentapi.example.scenarios.fluentapi;
 
-import com.github.stawirej.fluentapi.example.library.Book;
-import com.github.stawirej.fluentapi.example.library.CouldNotLendBook;
-import com.github.stawirej.fluentapi.example.library.Library;
-import com.github.stawirej.fluentapi.example.library.Reader;
+import com.github.stawirej.fluentapi.example.fluentapi.library.Book;
+import com.github.stawirej.fluentapi.example.fluentapi.library.CouldNotLendBook;
+import com.github.stawirej.fluentapi.example.fluentapi.library.Library;
+import com.github.stawirej.fluentapi.example.fluentapi.library.Reader;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.BDDAssertions.then;
