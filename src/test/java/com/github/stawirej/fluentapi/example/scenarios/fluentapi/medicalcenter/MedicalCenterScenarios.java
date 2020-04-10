@@ -1,4 +1,4 @@
-package com.github.stawirej.fluentapi.example.scenarios.fluentapi;
+package com.github.stawirej.fluentapi.example.scenarios.fluentapi.medicalcenter;
 
 import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Doctor;
 import com.github.stawirej.fluentapi.example.fluentapi.medicalcenter.Id;

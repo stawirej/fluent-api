@@ -1,4 +1,4 @@
-package com.github.stawirej.fluentapi.example.scenarios.fluentapi;
+package com.github.stawirej.fluentapi.example.scenarios.fluentapi.library;
 
 import com.github.stawirej.fluentapi.example.fluentapi.library.Book;
 import com.github.stawirej.fluentapi.example.fluentapi.library.CouldNotLendBook;
