@@ -83,6 +83,8 @@ To introduce this concept into Java code in practical way we need to use higher-
 
 In mathematics and computer science, currying is the technique of translating the evaluation of a function that +
 takes multiple arguments into evaluating a sequence of functions, each with a single argument (https://en.wikipedia.org/wiki/Currying[wiki]).
+We would like to apply this technique.
+Having one-argument functions and "curry" them enable creating fluent api.
 
 === Decorator
 
