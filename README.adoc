@@ -34,7 +34,10 @@ ____
 
 ---
 
-Stop for a moment and try to think about part of above quote: "… well-written prose." Often we encounter methods like:
+Stop for a moment and try to think about part of above quote: "… well-written prose." +
+Since the day I've read the Grady Booch quote, I feel some kind of itching and discomfort in my brain each time +
+I can't read code as well written english sentence.
+Often we encounter methods like:
 
 [source,java]
 ----
