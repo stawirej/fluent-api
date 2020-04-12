@@ -94,7 +94,7 @@ Well known higher-order functions are e.g. `filter()` or `map()`.
                 .collect(toList());
 ----
 
-Where `isGoldenDelicious` represents a predicate (function):
+Where `isGoldenDelicious` represents a predicate (function that returns true or false):
 
 [source,java]
 ----
