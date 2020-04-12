@@ -79,12 +79,18 @@ To introduce this concept into Java code in practical way we need to use higher-
 
 === Higher-order functions
 
+Higher order function consists of functions that either takes a function as a parameter or returns a function.
+Having them in our approach opens a way to implement fluent API. We will no longer rely on methods returning +
+"this" as e.g. for builder pattern approach or other non-functional interface implementations for having fluent api from user perspective.
+Higher-order functions allows us to implement fluent API as a "decorator" for existing multi-parameter methods.
+
 === Function currying
 
 In mathematics and computer science, currying is the technique of translating the evaluation of a function that +
 takes multiple arguments into evaluating a sequence of functions, each with a single argument (https://en.wikipedia.org/wiki/Currying[wiki]).
 We would like to apply this technique.
 Having one-argument functions and "curry" them enable creating fluent api.
+This allows having functions which will represent single "words" in our fluent API sentence.
 
 === Decorator
 
