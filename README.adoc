@@ -79,9 +79,9 @@ To introduce this concept into Java code in practical way we need to use higher-
 
 === Higher-order functions
 
-Higher order function consists of functions that either takes a function as a parameter or returns a function.
-Having them in our approach opens a way to implement fluent API. We will no longer rely on methods returning +
-"this" as e.g. for builder pattern approach or other non-functional interface implementations for having fluent api from user perspective.
+Higher-order functions consists of functions that either takes a function as a parameter or returns a function.
+We will no longer rely on methods returning "this" as e.g. for builder pattern approach or other non-functional interface +
+implementations for having fluent api from user perspective.
 Higher-order functions allows us to implement fluent API as a "decorator" for existing multi-parameter methods.
 Additionally, we will manage to build fluent API for more complex behaviors than object creation.
 
