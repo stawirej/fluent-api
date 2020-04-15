@@ -5,6 +5,8 @@ image:http://img.shields.io/:license-apache-blue.svg[License,link=http://www.apa
 
 = Practical application of higher-order functions and function currying for building fluent api in Java
 
+[red yellow-background big]*WORK IN PROGRESS*
+
 == Executive summary
 
 == Introduction
