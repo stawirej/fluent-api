@@ -23,7 +23,7 @@ We use them and experience shows we get used to their look.
 We struggle to introduce fluent api approach.
 It might rise some challenge for new or existing code.
 For covering trivial functionality connected with creating objects we always can use a builder pattern.
-We start to struggle when comes to create fluent api of more complicated behavior.
+We start to struggle when comes to create fluent api of more complicated behavior, or we just simple don't care.
 
 ---
 
@@ -114,9 +114,35 @@ Additionally, we will manage to build fluent API for more complex behaviors than
 In mathematics and computer science, currying is the technique of translating the evaluation of a function that +
 takes multiple arguments into evaluating a sequence of functions, each with a single argument (https://en.wikipedia.org/wiki/Currying[wiki]).
 
+Let's transform function with two arguments to sequence of functions with a single argument.
+
 [source,java]
 ----
+BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+----
 
+In "old", anonymous class approach we would get function currying as:
+[source,java]
+----
+Function<Integer, Function<Integer, Integer>> add = new Function<Integer, Function<Integer, Integer>>() {
+            @Override
+            public Function<Integer, Integer> apply(Integer a) {
+
+                return new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(Integer b) {
+
+                        return a + b;
+                    }
+                };
+            }
+        };
+----
+
+Let's make it more concise using lambda.
+[source,java]
+----
+ Function<Integer, Function<Integer, Integer>> add = a -> b -> a + b;
 ----
 
 We would like to apply this technique.
