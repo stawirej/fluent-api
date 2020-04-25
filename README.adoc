@@ -122,6 +122,7 @@ BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
 ----
 
 In "old", anonymous class approach we would get function currying as:
+
 [source,java]
 ----
 Function<Integer, Function<Integer, Integer>> add = new Function<Integer, Function<Integer, Integer>>() {
@@ -140,6 +141,7 @@ Function<Integer, Function<Integer, Integer>> add = new Function<Integer, Functi
 ----
 
 Let's make it more concise using lambda.
+
 [source,java]
 ----
  Function<Integer, Function<Integer, Integer>> add = a -> b -> a + b;
@@ -150,6 +152,34 @@ Having one-argument functions and "curry" them enable creating fluent api.
 This allows having functions which will represent single "words" in our fluent API sentence.
 
 === Decorator
+
+We have public method for registering a patient for the medical visit.
+
+[source,java]
+----
+public void register(
+            Patient patient,
+            Reason reason,
+            Doctor doctor,
+            Instant date) {
+                // Method body
+            }
+----
+
+Standard usage will look like.
+
+[source,java]
+----
+medicalCenter.register(patient, headache, doctor, date, reason);
+----
+
+Using higher-order functions and function currying we will "decorate" this method.
+This will create a fluent api which mimic natural language.
+
+[source,java]
+----
+medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
+----
 
 == Appendix
 
