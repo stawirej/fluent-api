@@ -184,6 +184,16 @@ This will create a fluent api which mimic natural language.
 medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
 ----
 
+==== Decorating
+
+[source,java]
+----
+public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
+
+    return reason -> doctor -> date -> register(patient, reason, doctor, date);
+}
+----
+
 == Appendix
 
 DSL not supporting lambdas when not a functional interface (interface with one function).
