@@ -163,7 +163,7 @@ public void register(
             Doctor doctor,
             Instant date) {
                 // Method body
-            }
+}
 ----
 
 TIP: We could simplify this api by usage of  https://refactoring.com/catalog/introduceParameterObject.html[Parameter Object], +
@@ -186,11 +186,26 @@ medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
 
 ==== Decorating
 
+Decorate `register` method.
+
 [source,java]
 ----
 public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
 
     return reason -> doctor -> date -> register(patient, reason, doctor, date);
+}
+----
+
+Hide _old_ `register` method by using `private' accessor.
+
+[source,java]
+----
+private void register(
+            Patient patient,
+            Reason reason,
+            Doctor doctor,
+            Instant date) {
+                // Method body
 }
 ----
 
