@@ -166,6 +166,9 @@ public void register(
             }
 ----
 
+TIP: We could simplify this api by usage of  https://refactoring.com/catalog/introduceParameterObject.html[Parameter Object], +
+but for the better understanding of described concept we won't.
+
 Standard usage will look like.
 
 [source,java]
