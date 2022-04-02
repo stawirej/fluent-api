@@ -95,6 +95,11 @@
                     <instructions>
                         <Export-Package>*</Export-Package>
                     </instructions>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>${project.groupId}.fluent.api</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
 
