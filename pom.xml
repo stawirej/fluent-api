@@ -35,6 +35,17 @@
         <developerConnection>scm:git:git@github.com:stawirej/fluent-api.git</developerConnection>
     </scm>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <issueManagement>
         <url>https://github.com/stawirej/fluent-api/issues</url>
         <system>GitHub Issues</system>
@@ -155,7 +166,7 @@
                 </configuration>
             </plugin>
 
-<!--            <plugin>-->
+            <!--            <plugin>-->
             <!--                <groupId>org.apache.maven.plugins</groupId>-->
             <!--                <artifactId>maven-gpg-plugin</artifactId>-->
             <!--                <version>${maven.gpg.plugin.version}</version>-->
