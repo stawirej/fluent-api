@@ -7,12 +7,18 @@
     <groupId>io.github.stawirej</groupId>
     <artifactId>fluent-api</artifactId>
     <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <name>fluent-api</name>
-    <packaging>bundle</packaging>
-
     <description>Java 8+ words substitution functions for building fluent api</description>
     <url>http://stawirej.github.io/fluent-api</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
@@ -22,13 +28,6 @@
             <id>pstawirej</id>
         </developer>
     </developers>
-
-    <licenses>
-        <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
 
     <scm>
         <url>https://github.com/stawirej/fluent-api</url>
@@ -46,8 +45,11 @@
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.bundle.plugin.version>4.2.1</maven.bundle.plugin.version>
-        <assertj.core.version>3.13.2</assertj.core.version>
-        <junit.version>5.5.2</junit.version>
+        <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
+        <maven.javadoc.plugin.version>3.3.2</maven.javadoc.plugin.version>
+        <maven.gpg.plugin.version>1.4</maven.gpg.plugin.version>
+        <assertj.core.version>3.22.0</assertj.core.version>
+        <junit.version>5.8.2</junit.version>
         <java.version>8</java.version>
     </properties>
 
@@ -121,6 +123,53 @@
                     </includes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-source</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>${java.version}</source>
+                </configuration>
+            </plugin>
+
+<!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-gpg-plugin</artifactId>-->
+            <!--                <version>${maven.gpg.plugin.version}</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>sign-artifacts</id>-->
+            <!--                        <phase>verify</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>sign</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+
         </plugins>
     </build>
 
