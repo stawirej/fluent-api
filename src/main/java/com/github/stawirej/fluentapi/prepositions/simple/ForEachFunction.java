@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.stawirej.fluentapi.postpositions;
+package com.github.stawirej.fluentapi.prepositions.simple;
 
 /**
- * Represents a function that accepts one argument, produces a result and substitutes 'through' word.
+ * Represents a function that accepts one argument, produces a result and substitutes 'forEach' word.
  *
  * @param <T> the type of the input to the function
  * @param <R> the type of the result of the function
  * @author Piotr Stawirej
  */
 @FunctionalInterface
-public interface ThroughFunction<R, T> {
+public interface ForEachFunction<R, T> {
 
     /**
      * Applies this function to the given argument.
@@ -31,5 +31,5 @@ public interface ThroughFunction<R, T> {
      * @param t the function argument
      * @return the function result
      */
-    R through(T t);
+    R forEach(T t);
 }

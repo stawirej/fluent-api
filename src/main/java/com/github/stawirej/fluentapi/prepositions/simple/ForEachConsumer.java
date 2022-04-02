@@ -13,23 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.stawirej.fluentapi.postpositions;
+package com.github.stawirej.fluentapi.prepositions.simple;
 
 /**
- * Represents a function that accepts one argument, produces a result and substitutes 'on' word.
+ * Represents an operation that accepts a single input argument, returns no result and substitutes 'forEach' word.
  *
- * @param <T> the type of the input to the function
- * @param <R> the type of the result of the function
+ * @param <T> the type of the input to the operation
  * @author Piotr Stawirej
  */
 @FunctionalInterface
-public interface OnFunction<R, T> {
+public interface ForEachConsumer<T> {
 
     /**
-     * Applies this function to the given argument.
+     * Performs this operation on the given argument.
      *
-     * @param t the function argument
-     * @return the function result
+     * @param t the input argument
      */
-    R on(T t);
+    void forEach(T t);
 }
