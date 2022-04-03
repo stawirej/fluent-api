@@ -39,8 +39,7 @@ jobs:
           git config --global user.email 'piotr.stawirej@gmail.com'
           git commit -a -m "build: update pom version"
           git push
-          git tag "v_${{ github.event.inputs.releaseversion }}"
-          git push origin --tags
+          git push origin "v_${{ github.event.inputs.releaseversion }}"
 
         env:
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
