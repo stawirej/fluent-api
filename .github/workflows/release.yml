@@ -45,14 +45,3 @@ jobs:
           MAVEN_USERNAME: ${{ secrets.OSS_SONATYPE_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.OSS_SONATYPE_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-
-
-      - uses: actions/checkout@v2
-      - name: Commit and push after release
-        run: |
-          git config --global user.name 'Piotr Stawirej'
-          git config --global user.email 'piotr.stawirej@gmail.com'
-          git commit -am "Release"
-          git push
-          git tag "v_${{ github.event.inputs.releaseversion }}"
-          git push origin --tags
