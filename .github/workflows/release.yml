@@ -33,7 +33,8 @@ jobs:
 
       - name: Publish package
         run: |
-          mvn --batch-mode clean deploy -P release -DskipTests=true
+          mvn --batch-mode clean deploy -DskipTests=true
+          rm ./pom.xml.versionsBackup
           git config --global user.name 'Piotr Stawirej'
           git config --global user.email 'piotr.stawirej@gmail.com'
           git commit -m "build: update pom version"
