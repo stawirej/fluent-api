@@ -36,7 +36,7 @@ jobs:
           mvn --batch-mode clean deploy -P release -DskipTests=true
           git config --global user.name 'Piotr Stawirej'
           git config --global user.email 'piotr.stawirej@gmail.com'
-          git commit -m "Release"
+          git commit -m "build: update pom version"
           git push
           git tag "v_${{ github.event.inputs.releaseversion }}"
           git push origin --tags
