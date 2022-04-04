@@ -23,7 +23,7 @@ final class MedicalCenterScenarios {
         Instant date = ZonedDateTime.now().plusDays(3).toInstant();
 
         // When
-        //  medicalCenter.register(patient, headache, doctor, date, reason);
+        // medicalCenter.register(patient, HEADACHE, doctor, date);
         medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
 
         // Then

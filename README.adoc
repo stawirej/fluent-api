@@ -173,7 +173,7 @@ Standard usage will look like.
 
 [source,java]
 ----
-medicalCenter.register(patient, headache, doctor, date, reason);
+medicalCenter.register(patient, headache, doctor, date);
 ----
 
 Using higher-order functions and function currying we will "decorate" this method.
