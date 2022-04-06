@@ -209,8 +209,97 @@ private void register(
 }
 ----
 
+==== Decoration steps
+
+Declaring a nested functions can be confusing at first sight. After second look, the procedure is quite simple.
+Let's examine declaration steps:
+
+- Start from left original method parameter. In our case it is "patient".
+- Declare starting, entry fluent interface method:
+
+[source,java]
+----
+register(Patient patient) {...}
+----
+
+- Create return function for second parameter ("reason").
+
+[source,java]
+----
+WithFunction<..., Reason> register(Patient patient) {...}
+----
+
+- Create return function for third parameter ("doctor").
+
+[source,java]
+----
+WithFunction<ToFunction<..., Doctor>, Reason> register(Patient patient) {...}
+----
+
+- Create return function for last parameter ("date").
+
+[source,java]
+----
+WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {...}
+----
+
+- Call original method with all parameters inside our _decorator_
+
+[source,java]
+----
+WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
+
+    return reason -> doctor -> date -> register(patient, reason, doctor, date);
+}
+----
+
+=== Builder
+
+- _Decoration_ idea from previous paragraph can be applied to create simple builder.
+- The procedure is the same as above, just the original method is constructor.
+
+==== Standard builder
+
+[source,java]
+----
+
+----
+
+
+==== Fluent builder
+
+[source,java]
+----
+
+----
+
+==== Limitations
+
+- Unable to create builders with optional paths/parameters.
+
+
 == Appendix
+
+=== Limitations
 
 DSL not supporting lambdas when not a functional interface (interface with one function).
 
-=== Maven Central
+=== Maven
+
+```
+<dependency>
+<groupId>io.github.stawirej</groupId>
+<artifactId>fluent-api</artifactId>
+<version>0.1.0</version>
+</dependency>
+```
+
+=== Gradle
+
+```
+implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
+```
+
+=== Customization
+
+TBD
