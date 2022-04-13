@@ -211,10 +211,12 @@ private void register(
 
 ==== Decoration steps
 
-Declaring a nested functions can be confusing at first sight. After second look, the procedure is quite simple.
+Declaring a nested functions can be confusing at first sight.
+After second look, the procedure is quite simple.
 Let's examine declaration steps:
 
-- Start from left original method parameter. In our case it is "patient".
+- Start from left original method parameter.
+In our case it is "patient".
 - Declare starting, entry fluent interface method:
 
 [source,java]
@@ -262,35 +264,247 @@ WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient p
 
 [source,java]
 ----
+public final class User {
 
+    private final String name;
+    private final String surname;
+    private final String login;
+    private final String password;
+    private final String email;
+
+    private User(String name,
+                 String surname,
+                 String login,
+                 String password,
+                 String email) {
+
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+    public static UserBuilder user() {
+        return new UserBuilder();
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public String surname() {
+        return surname;
+    }
+
+    public String login() {
+        return login;
+    }
+
+    public String password() {
+        return password;
+    }
+
+    public String email() {
+        return email;
+    }
+
+    public static class UserBuilder {
+
+        private String name;
+        private String surname;
+        private String login;
+        private String password;
+        private String email;
+
+        private UserBuilder() {
+        }
+
+        public UserBuilder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public UserBuilder withSurname(String surname) {
+            this.surname = surname;
+            return this;
+        }
+
+        public UserBuilder withLogin(String login) {
+            this.login = login;
+            return this;
+        }
+
+        public UserBuilder withPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public UserBuilder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public User build() {
+
+            requireNonNull(name, "name cannot be null");
+            requireNonNull(surname, "surname cannot be null");
+            requireNonNull(login, "login cannot be null");
+            requireNonNull(password, "password cannot be null");
+            requireNonNull(email, "email cannot be null");
+
+            return new User(name, surname, login, password, email);
+        }
+    }
+}
 ----
 
+==== Usage
+
+[source,java]
+----
+User user = user().withName("John")
+                          .withSurname("Doe")
+                          .withEmail("john.doe@gmail.com")
+                          .withLogin("johndoe")
+                          .withPassword("sosecretpassword")
+                          .build();
+----
 
 ==== Fluent builder
 
 [source,java]
 ----
+public final class User {
 
+    private final String name;
+    private final String surname;
+    private final String login;
+    private final String password;
+    private final String email;
+
+    private User(String name,
+                 String surname,
+                 String login,
+                 String password,
+                 String email) {
+
+        requireNonNull(name, "name cannot be null");
+        requireNonNull(surname, "surname cannot be null");
+        requireNonNull(login, "login cannot be null");
+        requireNonNull(password, "password cannot be null");
+        requireNonNull(email, "email cannot be null");
+
+        this.name = name;
+        this.surname = surname;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+    public static WithFunction<WithFunction<WithFunction<WithFunction<User, String>, String>, String>, String> with(String name) {
+
+        return surname -> login -> password -> email -> new User(name, surname, login, password, email);
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public String surname() {
+        return surname;
+    }
+
+    public String login() {
+        return login;
+    }
+
+    public String password() {
+        return password;
+    }
+
+    public String email() {
+        return email;
+    }
+}
+----
+
+==== Usage
+
+[source,java]
+----
+ User user = User.with("John")
+                        .with("Doe")
+                        .with("johndoe")
+                        .with("sosecretpassword")
+                        .with("john.doe@gmail.com");
+----
+
+==== Fluent builder for java records
+
+- It is even more concise and readable than the previous example
+
+[source,java]
+----
+public record User(String name,
+                   String surname,
+                   String login,
+                   String password,
+                   String email) {
+
+    public User {
+        requireNonNull(name, "name cannot be null");
+        requireNonNull(surname, "surname cannot be null");
+        requireNonNull(login, "login cannot be null");
+        requireNonNull(password, "password cannot be null");
+        requireNonNull(email, "email cannot be null");
+    }
+
+    public WithFunction<WithFunction<WithFunction<WithFunction<User, String>, String>, String>, String> with(String name) {
+
+        return surname -> login -> password -> email -> new User(name, surname, login, password, email);
+    }
+}
+----
+
+==== Usage
+
+[source,java]
+----
+ User user = User.with("John")
+                        .with("Doe")
+                        .with("johndoe")
+                        .with("sosecretpassword")
+                        .with("john.doe@gmail.com");
 ----
 
 ==== Limitations
 
 - Unable to create builders with optional paths/parameters.
-
+- For records unable to hide the constructor.
+- Confusing when not using Value Objects and leveraging static language features.
+    * E.g. which _String_ is what in _with(String s)_?
+    * Not an issue when using strongly typed Value Objects.
+- Possible personal style preferences issues:
+    * Multiple nested functions in declaration.
+    * Only general method names in builder (_with(...)_).
+    * No explicit _build()_ method.
 
 == Appendix
 
-=== Limitations
+=== Internal library implementation limitations
 
-DSL not supporting lambdas when not a functional interface (interface with one function).
+- Using declared library functions as lambdas required declaring as a functional interface (interface with one function).
+
+== Usage
 
 === Maven
 
 ```
 <dependency>
-<groupId>io.github.stawirej</groupId>
-<artifactId>fluent-api</artifactId>
-<version>0.1.0</version>
+    <groupId>io.github.stawirej</groupId>
+    <artifactId>fluent-api</artifactId>
+    <version>0.1.0</version>
 </dependency>
 ```
 

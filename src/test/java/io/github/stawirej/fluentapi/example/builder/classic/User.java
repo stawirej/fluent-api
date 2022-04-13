@@ -1,14 +1,14 @@
-package io.github.stawirej.fluentapi.example.builder;
+package io.github.stawirej.fluentapi.example.builder.classic;
 
 import static java.util.Objects.requireNonNull;
 
 public final class User {
 
-    private String name;
-    private String surname;
-    private String login;
-    private String password;
-    private String email;
+    private final String name;
+    private final String surname;
+    private final String login;
+    private final String password;
+    private final String email;
 
     private User(String name,
                  String surname,
