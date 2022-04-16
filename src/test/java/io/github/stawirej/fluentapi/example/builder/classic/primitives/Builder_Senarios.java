@@ -1,5 +1,6 @@
-package io.github.stawirej.fluentapi.example.builder.fluent;
+package io.github.stawirej.fluentapi.example.builder.classic.primitives;
 
+import static io.github.stawirej.fluentapi.example.builder.classic.primitives.User.user;
 import static org.assertj.core.api.BDDAssertions.then;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -10,15 +11,16 @@ import org.junit.jupiter.api.Test;
 final class Builder_Senarios {
 
     @Test
-    void fluent_builder() {
+    void old_builder() {
         // Given
 
         // When
-        User user = User.with("John")
-                        .with("Doe")
-                        .with("johndoe")
-                        .with("sosecretpassword")
-                        .with("john.doe@gmail.com");
+        User user = user().withName("John")
+                          .withSurname("Doe")
+                          .withEmail("john.doe@gmail.com")
+                          .withLogin("johndoe")
+                          .withPassword("sosecretpassword")
+                          .build();
 
         // Then
         then(user.name()).isEqualTo("John");

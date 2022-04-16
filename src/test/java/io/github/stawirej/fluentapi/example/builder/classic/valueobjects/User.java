@@ -1,20 +1,20 @@
-package io.github.stawirej.fluentapi.example.builder.classic;
+package io.github.stawirej.fluentapi.example.builder.classic.valueobjects;
 
 import static java.util.Objects.requireNonNull;
 
 public final class User {
 
-    private final String name;
-    private final String surname;
-    private final String login;
-    private final String password;
-    private final String email;
+    private final Name name;
+    private final Surname surname;
+    private final Login login;
+    private final Password password;
+    private final Email email;
 
-    private User(String name,
-                 String surname,
-                 String login,
-                 String password,
-                 String email) {
+    private User(Name name,
+                 Surname surname,
+                 Login login,
+                 Password password,
+                 Email email) {
 
         this.name = name;
         this.surname = surname;
@@ -27,58 +27,58 @@ public final class User {
         return new UserBuilder();
     }
 
-    public String name() {
+    public Name name() {
         return name;
     }
 
-    public String surname() {
+    public Surname surname() {
         return surname;
     }
 
-    public String login() {
+    public Login login() {
         return login;
     }
 
-    public String password() {
+    public Password password() {
         return password;
     }
 
-    public String email() {
+    public Email email() {
         return email;
     }
 
     public static class UserBuilder {
 
-        private String name;
-        private String surname;
-        private String login;
-        private String password;
-        private String email;
+        private Name name;
+        private Surname surname;
+        private Login login;
+        private Password password;
+        private Email email;
 
         private UserBuilder() {
         }
 
-        public UserBuilder withName(String name) {
+        public UserBuilder withName(Name name) {
             this.name = name;
             return this;
         }
 
-        public UserBuilder withSurname(String surname) {
+        public UserBuilder withSurname(Surname surname) {
             this.surname = surname;
             return this;
         }
 
-        public UserBuilder withLogin(String login) {
+        public UserBuilder withLogin(Login login) {
             this.login = login;
             return this;
         }
 
-        public UserBuilder withPassword(String password) {
+        public UserBuilder withPassword(Password password) {
             this.password = password;
             return this;
         }
 
-        public UserBuilder withEmail(String email) {
+        public UserBuilder withEmail(Email email) {
             this.email = email;
             return this;
         }
@@ -91,7 +91,8 @@ public final class User {
             requireNonNull(password, "password cannot be null");
             requireNonNull(email, "email cannot be null");
 
-            return new User(name, surname, login, password, email);
+            return new User(name, surname, login, password,
+                            email);
         }
     }
 }

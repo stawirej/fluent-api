@@ -1,4 +1,4 @@
-package io.github.stawirej.fluentapi.example.builder.fluent;
+package io.github.stawirej.fluentapi.example.builder.fluent.primitives;
 
 import static java.util.Objects.requireNonNull;
 

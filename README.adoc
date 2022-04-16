@@ -157,12 +157,11 @@ We have public method for registering a patient for the medical visit.
 
 [source,java]
 ----
-public void register(
-            Patient patient,
-            Reason reason,
-            Doctor doctor,
-            Instant date) {
-                // Method body
+public void register(Patient patient,
+                     Reason reason,
+                     Doctor doctor,
+                     Instant date) {
+                         // Method body
 }
 ----
 
@@ -200,12 +199,11 @@ Hide _old_ `register` method by using `private' accessor.
 
 [source,java]
 ----
-private void register(
-            Patient patient,
-            Reason reason,
-            Doctor doctor,
-            Instant date) {
-                // Method body
+private void register(Patient patient,
+                      Reason reason,
+                      Doctor doctor,
+                      Instant date) {
+                          // Method body
 }
 ----
 
@@ -266,17 +264,17 @@ WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient p
 ----
 public final class User {
 
-    private final String name;
-    private final String surname;
-    private final String login;
-    private final String password;
-    private final String email;
+    private final Name name;
+    private final Surname surname;
+    private final Login login;
+    private final Password password;
+    private final Email email;
 
-    private User(String name,
-                 String surname,
-                 String login,
-                 String password,
-                 String email) {
+    private User(Name name,
+                 Surname surname,
+                 Login login,
+                 Password password,
+                 Email email) {
 
         this.name = name;
         this.surname = surname;
@@ -289,58 +287,58 @@ public final class User {
         return new UserBuilder();
     }
 
-    public String name() {
+    public Name name() {
         return name;
     }
 
-    public String surname() {
+    public Surname surname() {
         return surname;
     }
 
-    public String login() {
+    public Login login() {
         return login;
     }
 
-    public String password() {
+    public Password password() {
         return password;
     }
 
-    public String email() {
+    public Email email() {
         return email;
     }
 
     public static class UserBuilder {
 
-        private String name;
-        private String surname;
-        private String login;
-        private String password;
-        private String email;
+        private Name name;
+        private Surname surname;
+        private Login login;
+        private Password password;
+        private Email email;
 
         private UserBuilder() {
         }
 
-        public UserBuilder withName(String name) {
+        public UserBuilder withName(Name name) {
             this.name = name;
             return this;
         }
 
-        public UserBuilder withSurname(String surname) {
+        public UserBuilder withSurname(Surname surname) {
             this.surname = surname;
             return this;
         }
 
-        public UserBuilder withLogin(String login) {
+        public UserBuilder withLogin(Login login) {
             this.login = login;
             return this;
         }
 
-        public UserBuilder withPassword(String password) {
+        public UserBuilder withPassword(Password password) {
             this.password = password;
             return this;
         }
 
-        public UserBuilder withEmail(String email) {
+        public UserBuilder withEmail(Email email) {
             this.email = email;
             return this;
         }
@@ -363,31 +361,33 @@ public final class User {
 
 [source,java]
 ----
-User user = user().withName("John")
-                          .withSurname("Doe")
-                          .withEmail("john.doe@gmail.com")
-                          .withLogin("johndoe")
-                          .withPassword("sosecretpassword")
-                          .build();
+ User user = user().withName(Name.from("John"))
+                   .withSurname(Surname.from("Doe"))
+                   .withLogin(Login.from("johndoe"))
+                   .withPassword(Password.from("sosecretpassword"))
+                   .withEmail(Email.from("john.doe@gmail.com"))
+                   .build();
 ----
 
-==== Fluent builder
+==== Decorated constructor builder
+
+Replace the original builder with a decorated constructor builder.
 
 [source,java]
 ----
 public final class User {
 
-    private final String name;
-    private final String surname;
-    private final String login;
-    private final String password;
-    private final String email;
+    private final Name name;
+    private final Surname surname;
+    private final Login login;
+    private final Password password;
+    private final Email email;
 
-    private User(String name,
-                 String surname,
-                 String login,
-                 String password,
-                 String email) {
+    private User(Name name,
+                 Surname surname,
+                 Login login,
+                 Password password,
+                 Email email) {
 
         requireNonNull(name, "name cannot be null");
         requireNonNull(surname, "surname cannot be null");
@@ -402,28 +402,28 @@ public final class User {
         this.email = email;
     }
 
-    public static WithFunction<WithFunction<WithFunction<WithFunction<User, String>, String>, String>, String> with(String name) {
+    public static WithFunction<WithFunction<WithFunction<WithFunction<User, Email>, Password>, Login>, Surname> with(Name name) {
 
         return surname -> login -> password -> email -> new User(name, surname, login, password, email);
     }
 
-    public String name() {
+    public Name name() {
         return name;
     }
 
-    public String surname() {
+    public Surname surname() {
         return surname;
     }
 
-    public String login() {
+    public Login login() {
         return login;
     }
 
-    public String password() {
+    public Password password() {
         return password;
     }
 
-    public String email() {
+    public Email email() {
         return email;
     }
 }
@@ -433,16 +433,59 @@ public final class User {
 
 [source,java]
 ----
- User user = User.with("John")
-                        .with("Doe")
-                        .with("johndoe")
-                        .with("sosecretpassword")
-                        .with("john.doe@gmail.com");
+User user = User.with(Name.from("John"))
+                .with(Surname.from("Doe"))
+                .with(Login.from("johndoe"))
+                .with(Password.from("sosecretpassword"))
+                .with(Email.from("john.doe@gmail.com"));
 ----
 
 ==== Fluent builder for java records
 
 - It is even more concise and readable than the previous example
+
+[source,java]
+----
+public record User(Name name,
+                   Surname surname,
+                   Login login,
+                   Password password,
+                   Email email) {
+
+    public User {
+
+        requireNonNull(name, "name cannot be null");
+        requireNonNull(surname, "surname cannot be null");
+        requireNonNull(login, "login cannot be null");
+        requireNonNull(password, "password cannot be null");
+        requireNonNull(email, "email cannot be null");
+
+    }
+
+    public static WithFunction<WithFunction<WithFunction<WithFunction<User, Email>, Password>, Login>, Surname> with(Name name) {
+
+        return surname -> login -> password -> email -> new User(name, surname, login, password, email);
+    }
+}
+----
+
+==== Usage
+
+[source,java]
+----
+User user = User.with(Name.from("John"))
+                        .with(Surname.from("Doe"))
+                        .with(Login.from("johndoe"))
+                        .with(Password.from("sosecretpassword"))
+                        .with(Email.from("john.doe@gmail.com"));
+----
+
+==== Primitive Obsession
+
+- Modeling using https://refactoring.guru/smells/primitive-obsession[primitive obsession] has impact on _functional_ builder usage.
+- Building with primitive types require remembering constructor parameters order.
+- Creating below `User` record with _functional_ builder, will not give you verbose parameter type name,
+but only required type information with one letter variable (e.g. _with(String t)_).
 
 [source,java]
 ----
@@ -467,8 +510,6 @@ public record User(String name,
 }
 ----
 
-==== Usage
-
 [source,java]
 ----
  User user = User.with("John")
@@ -483,11 +524,11 @@ public record User(String name,
 - Unable to create builders with optional paths/parameters.
 - For records unable to hide the constructor.
 - Confusing when not using Value Objects and leveraging static language features.
-    * E.g. which _String_ is what in _with(String s)_?
+    * E.g. which _String_ means what in _with(String t)_?
     * Not an issue when using strongly typed Value Objects.
 - Possible personal style preferences issues:
-    * Multiple nested functions in declaration.
-    * Only general method names in builder (_with(...)_).
+    * Multiple nested functions in builder declaration.
+    * General method names in builder (_with(...)_) without parameter name (e.g. _withName(...)_).
     * No explicit _build()_ method.
 
 == Appendix
@@ -496,9 +537,9 @@ public record User(String name,
 
 - Using declared library functions as lambdas required declaring as a functional interface (interface with one function).
 
-== Usage
+=== Dependencies
 
-=== Maven
+==== Maven
 
 ```
 <dependency>
@@ -508,7 +549,7 @@ public record User(String name,
 </dependency>
 ```
 
-=== Gradle
+==== Gradle
 
 ```
 implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
