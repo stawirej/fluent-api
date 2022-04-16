@@ -533,10 +533,6 @@ public record User(String name,
 
 == Appendix
 
-=== Internal library implementation limitations
-
-- Using declared library functions as lambdas required declaring as a functional interface (interface with one function).
-
 === Dependencies
 
 ==== Maven
