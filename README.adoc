@@ -616,3 +616,6 @@ implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
 
 === Customization
 
+_What if https://github.com/stawirej/fluent-api[fluent-api] library does not provide functional interfaces for my specific domain?_
+
+Use auxiliary project https://github.com/stawirej/fluent-api-generator[fluent-api-generator] to generate version of fluent-api library tailored to your needs.
