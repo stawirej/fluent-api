@@ -316,8 +316,10 @@ WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient p
 
 === Builder
 
-- _Decoration_ idea from previous paragraph can be applied to create simple builder.
-- The procedure is the same as above, just the original method is constructor.
+_Decoration_ idea from previous paragraph can be applied to create simple builder.
+
+The procedure is the same as above, just the base method is constructor.
+The procedure is the same as above, just the base method is constructor.
 
 ==== Standard builder
 
@@ -432,7 +434,7 @@ public final class User {
 
 ==== Decorated constructor builder
 
-Replace the original builder with a decorated constructor builder.
+Replace the standard builder with a decorated constructor builder.
 
 [source,java]
 ----
@@ -580,7 +582,7 @@ public record User(String name,
                         .with("john.doe@gmail.com");
 ----
 
-==== Limitations
+==== Library limitations
 
 - Unable to create builders with optional paths/parameters.
 - For records unable to hide the constructor.
@@ -614,4 +616,3 @@ implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
 
 === Customization
 
-TBD
