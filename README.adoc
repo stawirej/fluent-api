@@ -5,9 +5,70 @@ image:http://img.shields.io/:license-apache-blue.svg[License,link=http://www.apa
 
 = Practical application of higher-order functions and function currying for building fluent api in Java
 
-[red yellow-background big]*WORK IN PROGRESS*
+== TL;DR
 
-== Executive summary
+Build a fluent api in Java that mimic natural language.
+
+From
+
+[source,java]
+----
+medicalCenter.register(patient, headache, doctor, date);
+----
+
+to
+
+[source,java]
+----
+medicalCenter.register(patient).with(HEADACHE).to(doctor).at(date);
+----
+
+or create builders limiting boilerplate and without libraries like https://projectlombok.org/[lombok].
+
+[source,java]
+----
+User user = User.with(Name.from("John"))
+                .with(Surname.from("Doe"))
+                .with(Login.from("johndoe"))
+                .with(Password.from("sosecretpassword"))
+                .with(Email.from("john.doe@gmail.com"));
+----
+
+by decorating existing methods or constructors with fluent-api library.
+
+[source,java]
+----
+public WithFunction<ToFunction<AtConsumer<Instant>, Doctor>, Reason> register(Patient patient) {
+
+    return reason -> doctor -> date -> register(patient, reason, doctor, date);
+}
+----
+
+[source,java]
+----
+public static WithFunction<WithFunction<WithFunction<WithFunction<User, Email>, Password>, Login>, Surname> with(Name name) {
+
+    return surname -> login -> password -> email -> new User(name, surname, login, password, email);
+}
+----
+
+=== Dependencies
+
+==== Maven
+
+```
+<dependency>
+    <groupId>io.github.stawirej</groupId>
+    <artifactId>fluent-api</artifactId>
+    <version>0.1.0</version>
+</dependency>
+```
+
+==== Gradle
+
+```
+implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
+```
 
 == Introduction
 
@@ -54,11 +115,11 @@ It doesn't even sound as a proper sentence.
 
 === Key question
 
-How can we easily build a fluent API in Java and mimic natural language?
+How to build a fluent API in Java that mimic natural language?
 
 == Answer
 
-=== Missing parts of speech
+=== Missing parts of the speech
 
 Terry Bozzio was asked once why he need such a big drum kit.
 "To play music, I need notes!" he said.
@@ -80,7 +141,7 @@ library.lend(book).to(reader);
 
 Now we have correct english sentence: "Library lend book to reader"!
 
-To introduce this concept into Java code in practical way we need to use higher-order functions and function currying.
+One way to introduce this concept into Java code in practical way is using higher-order functions and function currying.
 
 === Higher-order functions
 
