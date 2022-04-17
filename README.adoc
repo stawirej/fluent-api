@@ -34,7 +34,7 @@ User user = User.with(Name.from("John"))
                 .with(Email.from("john.doe@gmail.com"));
 ----
 
-by decorating existing methods or constructors with https://github.com/stawirej/fluent-api[fluent-api] library functions.
+by decorating existing methods or constructors with https://github.com/stawirej/fluent-api[fluent-api] library functions
 
 [source,java]
 ----
