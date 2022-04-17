@@ -594,28 +594,19 @@ public record User(String name,
     * General method names in builder (_with(...)_) without parameter name (e.g. _withName(...)_).
     * No explicit _build()_ method.
 
-== Appendix
+== Functions
 
-=== Dependencies
+- Library provides two types of functions:
+    * <WORD>Consumer (e.g. WithConsumer<T>) - function that accepts a single input argument, returns no result and substitutes <WORD>.
+    * <WORD>Function (e.g. WithFunction<R, T>) - function that accepts one argument, produces a result and substitutes <WORD>.
+- Available functions
+    * https://github.com/stawirej/fluent-api/tree/master/src/main/java/io/github/stawirej/fluentapi/prepositions/simple[Simple prepositions]
+    * https://github.com/stawirej/fluent-api/tree/master/src/main/java/io/github/stawirej/fluentapi/prepositions/complex[Complex prepositions]
+    * https://github.com/stawirej/fluent-api/tree/master/src/main/java/io/github/stawirej/fluentapi/postpositions[Postpositions]
 
-==== Maven
-
-```
-<dependency>
-    <groupId>io.github.stawirej</groupId>
-    <artifactId>fluent-api</artifactId>
-    <version>0.1.0</version>
-</dependency>
-```
-
-==== Gradle
-
-```
-implementation group: 'io.github.stawirej', name: 'fluent-api', version: "0.1.0"
-```
-
-=== Customization
+== Customization
 
 _What if https://github.com/stawirej/fluent-api[fluent-api] library does not provide functional interfaces for my specific domain?_
 
 Use auxiliary project https://github.com/stawirej/fluent-api-generator[fluent-api-generator] to generate version of fluent-api library tailored to your needs.
+
